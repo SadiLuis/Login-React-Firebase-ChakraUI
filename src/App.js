@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
 
 function App() {
+const [user , setUser] = useState(null)
+/*!!! Lo que hacemos en este momento es crear un estado que guarda la informacion de usuario, para luego crear una condicion que dice : "Si existe el usuario muestra el home, si no existe el usuario muestra Login"
+*/
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    user ? <Home user={user} /> : <Login />
+  ) 
 }
 
 export default App;
+
+/*  user ? <Home user={user} /> : <Login /> */
