@@ -51,6 +51,21 @@ import registerUser from '../functions/registerUser';
    
   }
 
+  async function handleGoogleLogin (e){
+      e.preventDefault()
+      try {
+        await loginWithGoogle()
+        toast({
+          title: 'Login Success with Google',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
+      } catch (error) {
+          console.log(error)
+      }
+  }
+
 
     return (
       <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
@@ -72,7 +87,7 @@ import registerUser from '../functions/registerUser';
                 variant={'outline'}
                 leftIcon={<FcGoogle />}>
                 <Center>
-                  <Text>Sign in with Google</Text>
+                  <Text onClick={handleGoogleLogin} >Sign in with Google</Text>
                 </Center>
               </Button> : ""}
               <Button colorScheme={'blue'} variant={'solid'}  onClick={submitForm}>
